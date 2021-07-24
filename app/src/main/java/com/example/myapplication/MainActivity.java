@@ -39,10 +39,6 @@ public class MainActivity extends AppCompatActivity implements SecondFragment.Ca
         } else {
             ((ThirdFragment) f3).setText(mText);
         }
-
-        getSupportFragmentManager().beginTransaction()
-                .replace(mThirdContainer.getId(), f3, FRAGMENT_TAG)
-                .commit();
     }
 
     private void createFragment() {

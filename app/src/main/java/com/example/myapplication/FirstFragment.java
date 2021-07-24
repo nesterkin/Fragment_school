@@ -6,10 +6,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -18,6 +20,8 @@ import androidx.fragment.app.Fragment;
 public class FirstFragment extends Fragment {
 
     private EditText mEditText;
+    private Button mButton;
+    private Button mAdapterButton;
 
     public static Fragment newInstance() {
         return new FirstFragment();
@@ -32,6 +36,17 @@ public class FirstFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mEditText = view.findViewById(R.id.edit_text);
+        mButton = view.findViewById(R.id.button);
+        mButton.setOnClickListener(v -> startActivity(ViewPagerActivity.newIntent(v.getContext())));
+        mAdapterButton = view.findViewById(R.id.adapter_button);
+        mAdapterButton.setOnClickListener(v -> new AlertDialog.Builder(v.getContext())
+                .setTitle("Title")
+                .setMessage("Message")
+                .setPositiveButton("Positive", (dialog, which) -> dialog.dismiss())
+                .setNegativeButton("Negative", (dialog, which) -> dialog.dismiss())
+                .setNeutralButton("Neutral", (dialog, which) -> dialog.dismiss())
+                .setCancelable(false)
+                .show());
         mEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

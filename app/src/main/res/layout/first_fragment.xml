@@ -8,4 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:layout_gravity="bottom"
+        android:text="@string/run_viewpager"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_gravity="bottom|end"
+        android:text="@string/run_dialog"
+        android:id="@+id/adapter_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </FrameLayout>
